@@ -1,0 +1,76 @@
+
+Conversation opened. 2 messages. All messages read.
+
+Skip to content
+Using BVRITHYDERABAD Mail with screen readers
+1 of 854
+(no subject)
+External
+Inbox
+
+Charishma Bonkuri
+Attachments12:23 PM (25 minutes ago)
+
+
+20WH1A6640 NELLI SANJANA <20wh1a6640@bvrithyderabad.edu.in>
+Attachments
+12:39 PM (9 minutes ago)
+to 20wh1a6642
+
+
+
+---------- Forwarded message ---------
+From: Charishma Bonkuri <charishma2808@gmail.com>
+Date: Tue, Nov 9, 2021 at 12:23 PM
+Subject:
+To: <20wh1a6640@bvrithyderabad.edu.in>
+
+
+
+2 Attachments
+BVRITHYDERABAD Mail virus scanners are temporarily unavailable – The attached files haven't been scanned for viruses. Download these files at your own risk.
+#include<stdio.h>
+
+int linear_search(int arr[], int size,int index, int element){
+
+    if (index < size){
+        if (arr[index] == element){
+            return index + 1;
+        }
+        else {
+            return linear_search(arr, size, index+ 1, element);
+        }
+    }
+    return -1;
+
+
+}
+
+int main(){
+    int size, element, pos, index= 0;
+    int arr[size];
+    printf("Enter number of elements : ");
+    scanf("%d", &size);
+    for (int i = 0;i  < size; i++){
+        scanf("%d", &arr[i]);
+    }
+    printf("Enter element to be found : ");
+    scanf("%d", &element);
+    pos = linear_search(arr, size, index, element);
+    if (pos == -1){
+        printf("Element not found\n");
+
+    }
+    else{
+        printf("Element is found at %d.\n", pos);
+
+    }
+
+
+
+
+
+
+}
+linear_search_recursion.c
+Displaying linear_search_recursion.c.
