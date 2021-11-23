@@ -199,6 +199,7 @@ break;
    case 11: head=sorting(head);
     break;
    case 12: exit(0);
-   
+
+
 
 
