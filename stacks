@@ -1,0 +1,490 @@
+3.Write  a program that implement stack(its operations) using 
+i)Arrays  ii)Pointers
+i)Arrays
+  
+	#include<stdio.h>
+#include<stdlib.h>
+	#define SIZE 5
+	int i,ele,top = -1,stack[SIZE];
+	void push(int ele){
+	     stack[++top] = ele;
+	}
+	int pop(){
+	    return(stack[top--]);
+	}
+	int peek(){
+	    return(stack[top]);
+	}
+	void display(){
+	     for(i = top; i >= 0; i--){
+	         printf("%d\n",stack[i]);
+	     }
+	}
+	int main(){
+	    int ch;
+	    while(1){
+	          printf("\n1-push\n2-pop\n3-peek\n4-display\n5-exit");
+	          printf("\nEnter your choice : ");
+	          scanf("%d",&ch);
+	          switch(ch){
+	                case 1 : if(top == SIZE - 1){
+	                                  printf("stack overflow");
+	                        }
+	                        else{
+	                            printf("Enter element to be inserted : ");
+	                            scanf("%d",&ele);
+	                            push(ele);
+	                       }
+	                       break;
+	                case 2 : if(top == -1){
+	                                 printf("stack underflow");
+	                         }
+	                         else{
+	                             printf("deleted element is %d",pop());
+	                         }
+	                         break;
+	                case 3 : if(top == -1){
+	                                 printf("stack underflow");
+	                         }
+	                         else{
+	                             printf("top element is %d",peek());
+	                         }
+	                         break;
+	                case 4 : if(top == -1){
+	                                 printf("stack underflow");
+	                         }
+	                         else{
+	                              display();
+	                         }
+	                         break;
+	                case 5 : exit(0);
+	
+
+	            }
+	    }
+	}
+	
+
+	Output:
+	1-push
+	2-pop
+	3-peek
+	4-display
+	5-exit
+	Enter your choice : 1
+	Enter element to be inserted : 6
+	
+
+	1-push
+	2-pop
+	3-peek
+	4-display
+	5-exit
+	Enter your choice : 1
+	Enter element to be inserted : 2
+	
+
+	1-push
+	2-pop
+	3-peek
+	4-display
+	5-exit
+	Enter your choice : 1
+	Enter element to be inserted : 3
+	
+
+	1-push
+	2-pop
+	3-peek
+	4-display
+	5-exit
+	Enter your choice : 4
+	3
+	2
+	6
+	
+
+	1-push
+	2-pop
+	3-peek
+	4-display
+	5-exit
+	Enter your choice : 2
+	deleted element is 3
+	1-push
+	2-pop
+	3-peek
+	4-display
+	5-exit
+	Enter your choice : 4
+	2
+	6
+	
+
+	1-push
+	2-pop
+	3-peek
+	4-display
+	5-exit
+	Enter your choice : 3
+	top element is 2
+	1-push
+	2-pop
+	3-peek
+	4-display
+	5-exit
+	Enter your choice : 5
+ii)Pointers
+        
+	#include<stdio.h>
+#include<stdlib.h>
+	struct node{
+	       int data;
+	       struct node*link;
+	};
+	struct node*top = NULL, *cur, *temp;
+	void push(int ele){
+	     cur = (struct node*)malloc(sizeof(struct node));
+	     cur->data = ele;
+	     if(top == NULL){
+	             cur->link = NULL;
+	     }
+	     else{
+	         cur->link = top;
+	     }
+	     top = cur;
+	}
+	int pop(){
+	    temp = top;
+	    if(top == NULL){
+	            printf("stack underflow");
+	    }
+	    else{
+	        top = top->link;
+	        return(temp->data);
+	        free(temp);
+	    }
+	}
+	int peek(){
+	    return(top->data);
+	}
+	void display(){
+	     temp = top;
+	     while(temp != NULL){
+	                 printf("%d\n", temp->data);
+	                 temp = temp->link;
+	     }
+	}
+	int main(){
+	    int ch,ele;
+	    while(1){
+	         printf("\n1-push\n2-pop\n3-peek\n4-display\n5-exit");
+	         printf("\nEnter your choice : ");
+	         scanf("%d", &ch);
+	         switch(ch){
+	                case 1 : printf("Enter element : ");
+	                         scanf("%d", &ele);
+	                         push(ele);
+	                         break;
+	                case 2 : printf("Deleted element id %d",pop());
+	                         break;
+	                case 3 : if(top == NULL){
+	                                 printf("stack underflow");
+	                         }
+	                         else{
+	                             printf("top most ele is %d",peek());
+	                         }
+	                         break;
+	               case 4 : if(top == NULL){
+	                                 printf("stack underflow");
+	                        }
+	                        else{
+	                            display();
+	                        }
+	                        break;
+	               case 5 : exit(0);
+	        }
+	    }
+	}
+	
+
+	Output:
+	1-push
+	2-pop
+	3-peek
+	4-display
+	5-exit
+	Enter your choice : 1
+	Enter element : 1
+	
+
+	1-push
+	2-pop
+	3-peek
+	4-display
+	5-exit
+	Enter your choice : 1
+	Enter element : 4
+	
+
+	1-push
+	2-pop
+	3-peek
+	4-display
+	5-exit
+	Enter your choice : 1
+	Enter element : 3
+	
+
+	1-push
+	2-pop
+	3-peek
+	4-display
+	5-exit
+	Enter your choice : 4
+	3
+	4
+	1
+	
+
+	1-push
+	2-pop
+	3-peek
+	4-display
+	5-exit
+	Enter your choice : 2
+	Deleted element id 3
+	1-push
+	2-pop
+	3-peek
+	4-display
+	5-exit
+	Enter your choice : 4
+	4
+	1
+	
+
+	1-push
+	2-pop
+	3-peek
+	4-display
+	5-exit
+	Enter your choice : 3
+	top most ele is 4
+	1-push
+	2-pop
+	3-peek
+	4-display
+	5-exit
+	Enter your choice : 5
+4.Write a program that implement Queue(its operations) using 
+i)Arrays  ii)Pointers
+i)Arrays 
+#include<stdio.h>
+#include<stdlib.h>
+#define SIZE 5
+int front = -1,rear = -1,a[SIZE];
+void enqueue(int ele){
+    a[++rear] = ele;
+    if(front == -1)
+        front = 0;
+}
+int dequeue(){
+    if(front == rear){
+        return a[front];
+        front = rear = -1;
+    }
+    else{
+        return a[front++];
+    }
+}
+void display(){
+    for(int i=front;i<=rear;i++){
+        printf("%d\n",a[i]);
+    }
+}
+
+int main(){
+    int ch,ele;
+    while(1){
+        printf("\n 1-enqueue \n 2-dequeue \n 3-display \n 4-exit \n");
+        printf("Enter your choice :");
+        scanf("%d",&ch);
+        switch(ch){
+            case 1 : if(rear == SIZE - 1)
+                        printf("Queue overflow");
+                     else{
+                        printf("Enter element to be inserted :");
+                        scanf("%d",&ele);
+                        enqueue(ele);
+                     }
+                     break;
+            case 2 : if(front == -1)
+                        printf("Queue underflow");
+                     else
+                        printf("deleted element is %d",  dequeue());
+                     break;
+            case 3 : if(front == -1)
+                        printf("Queue empty");
+                     else
+                        display();
+                     break;
+            case 4 : exit(0);
+
+       }
+    }
+}
+Output:
+ 1-enqueue
+ 2-dequeue
+ 3-display
+ 4-exit
+Enter your choice :1
+Enter element to be inserted :5
+
+ 1-enqueue
+ 2-dequeue
+ 3-display
+ 4-exit
+Enter your choice :1
+Enter element to be inserted :7
+
+ 1-enqueue
+ 2-dequeue
+ 3-display
+ 4-exit
+Enter your choice :3
+5
+7
+
+ 1-enqueue
+ 2-dequeue
+ 3-display
+ 4-exit
+Enter your choice :2
+deleted element is 5
+ 1-enqueue
+ 2-dequeue
+ 3-display
+ 4-exit
+Enter your choice :3
+7
+
+ 1-enqueue
+ 2-dequeue
+ 3-display
+ 4-exit
+Enter your choice :4
+
+Process returned 0 (0x0)   execution time : 31.903 s
+Press any key to continue.
+
+ii)Pointers
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int data;
+    struct node*link;
+};
+struct node*front = NULL,*rear = NULL,*cur;
+void enqueue(int ele){
+    cur = (struct node*)malloc(sizeof(struct node));
+    cur->data = ele;
+    cur->link = NULL;
+    if(front==NULL){
+        front = rear = cur;
+    }
+    else{
+        rear->link = cur;
+        rear = cur;
+    }
+
+}
+void dequeue(){
+    if(front == NULL){
+        printf("Queue underflow");
+    }
+    else if(front == rear){
+        printf("deleted element is %d",front->data);
+        front = rear = NULL;
+    }
+    else{
+        printf("deleted element is %d",front->data);
+        front=front->link;
+    }
+}
+void display(){
+    if(front == NULL){
+        printf("Queue is empty");
+    }
+    else{
+        cur = front;
+        while(cur!=NULL){
+            printf("%d\n",cur->data);
+            cur = cur->link;
+        }
+    }
+}
+
+int main(){
+    int ch,ele;
+    while(1){
+        printf("\n 1-enqueue \n 2-dequeue \n 3-display \n 4-exit \n");
+        printf("Enter your choice :");
+        scanf("%d",&ch);
+        switch(ch){
+            case 1 : printf("Enter element to be inserted :");
+                     scanf("%d",&ele);
+                     enqueue(ele);
+                     break;
+            case 2 :
+                     dequeue();
+                     break;
+            case 3 : display();
+                     break;
+            case 4 : exit(0);
+
+       }
+    }
+}
+Output:
+ 1-enqueue
+ 2-dequeue
+ 3-display
+ 4-exit
+Enter your choice :1
+Enter element to be inserted :1
+
+ 1-enqueue
+ 2-dequeue
+ 3-display
+ 4-exit
+Enter your choice :1
+Enter element to be inserted :3
+
+ 1-enqueue
+ 2-dequeue
+ 3-display
+ 4-exit
+Enter your choice :3
+1
+3
+
+ 1-enqueue
+ 2-dequeue
+ 3-display
+ 4-exit
+Enter your choice :2
+deleted element is 1
+ 1-enqueue
+ 2-dequeue
+ 3-display
+ 4-exit
+Enter your choice :3
+3
+
+ 1-enqueue
+ 2-dequeue
+ 3-display
+ 4-exit
+Enter your choice :4
