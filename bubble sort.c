@@ -28,3 +28,39 @@ int main()
     }
     return 0;
 }
+#output
+#enter the no of elements
+5
+#enter the integers
+ 45
+89
+76
+77
+65
+#sorted list in ascending order
+45
+65
+76
+77
+89
+#enter the no of elements
+3
+enter the integers
+23
+89
+88
+sorted list in ascending order
+23
+88
+89
+#enter the no of elements
+3
+enter the integers
+67
+89
+33
+sorted list in ascending order
+33
+67
+89
+
